@@ -29,13 +29,14 @@ ERD
 ## MVP
 
 - Create 4 models: User, Friend List, Book and Review with one to many relations
-- Add 3rd party API(Open Library)
 - Create routes Create, Read, Update, Delete for reviews, books 
 - Authentication system
 - When user authenticated can accsses fuul CRUD with books adding them from 3rd party API(Open Library), updating status of the book, adding rating and comment
 - User will be able to search for other users and following them, able to see their libraries and comments
 - All added and rated books will be stored on local db
 - 3 types of search Book, Author, User name
+- Create model user_book
+- Add 3rd party API(Open Library)
 
 ---
 ## Post MVP
