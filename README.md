@@ -2,8 +2,7 @@
 
 ### App to collect, rate and share your favorite books
 
-## [Trello]
-(https://trello.com/b/Fd4JKdbE/mylibrary)
+## [Trello](https://trello.com/b/Fd4JKdbE/mylibrary).
 
 ## About:
 - Create your own libraries the way you want 
