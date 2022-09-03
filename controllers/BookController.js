@@ -9,6 +9,26 @@ const createBook = async (req, res) => {
   }
 }
 
+const getBookByTitle = async (req, res) => {
+  try {
+    let bookTitle = req.query.search
+    let book = await Book.find({ title: bookTitle })
+    res.send(book)
+  } catch (error) {
+    throw error
+  }
+}
+
+const getBookByAuthor = async (req, res) => {
+  try {
+    let bookAuthor = req.query.search
+    let book = await Book.find({ title: bookAuthor })
+    res.send(book)
+  } catch (error) {
+    throw error
+  }
+}
+
 const createUserBook = async (req, res) => {
   try {
     let userId = parseInt(req.params.userId)
@@ -38,8 +58,36 @@ const updateUserBook = async (req, res) => {
   }
 }
 
+const getAllUserBooksLibraries = async (req, res) => {
+  try {
+    const getLibraries = await UserBook.findAll({
+      where: { userId: req.params.userId },
+      attribute: ['library']
+    })
+    res.send(getLibraries)
+  } catch (error) {
+    throw error
+  }
+}
+const getAllUserBooksByLibrary = async (req, res) => {
+  try {
+    let user = req.params.userId
+    let library = req.params.library
+    let books = await UserBook.findAll({
+      where: { userId: user, library: library }
+    })
+    res.send(books)
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   createBook,
+  getBookByTitle,
+  getBookByAuthor,
   createUserBook,
-  updateUserBook
+  updateUserBook,
+  getAllUserBooksLibraries,
+  getAllUserBooksByLibrary
 }

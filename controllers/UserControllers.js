@@ -1,10 +1,12 @@
 const { User, FriendList } = require('../models')
 const friendlist = require('../models/friendlist')
 
-const getUserById = async (req, res) => {
+const getUserByName = async (req, res) => {
   try {
-    const user = await User.findByPk(req.params.id, {
-      attributes: ['username', 'email']
+    let userName = req.query.search
+    let user = await User.findByPk({
+      username: userName,
+      attributes: ['username', 'image']
     })
     res.send(user)
   } catch (error) {
@@ -51,7 +53,7 @@ const getFollowers = async (req, res) => {
 }
 
 module.exports = {
-  getUserById,
+  getUserByName,
   createFollower,
   getFollowing,
   getFollowers
