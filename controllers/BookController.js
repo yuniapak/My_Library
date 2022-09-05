@@ -81,6 +81,19 @@ const getAllUserBooksByLibrary = async (req, res) => {
     throw error
   }
 }
+const deleteUserBook = async (req, res) => {
+  try {
+    let userbookId = req.params.bookId
+    await UserBook.destroy({
+      where: {
+        id: userbookId
+      }
+    })
+    res.send({ message: `Deleted ${userbookId}` })
+  } catch (error) {
+    throw error
+  }
+}
 
 module.exports = {
   createBook,
@@ -89,5 +102,6 @@ module.exports = {
   createUserBook,
   updateUserBook,
   getAllUserBooksLibraries,
-  getAllUserBooksByLibrary
+  getAllUserBooksByLibrary,
+  deleteUserBook
 }

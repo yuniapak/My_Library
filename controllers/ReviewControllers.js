@@ -1,9 +1,9 @@
-const { Reviews } = require('../models')
+const { Review } = require('../models')
 
 const getReviewsByBook = async (req, res) => {
   try {
     let bookId = parseInt(req.params.bookId)
-    let reviews = await Reviews.findAll({ where: { bookId: bookId } })
+    let reviews = await Review.findAll({ where: { bookId: bookId } })
     res.send(reviews)
   } catch (error) {
     throw error
@@ -18,7 +18,7 @@ const createReview = async (req, res) => {
       userId: userId,
       ...req.body
     }
-    let review = await Reviews.create(body)
+    let review = await Review.create(body)
     res.send(review)
   } catch (error) {
     throw error
@@ -26,8 +26,8 @@ const createReview = async (req, res) => {
 }
 const updateReview = async (req, res) => {
   try {
-    let reviewId = pardeInt(req.params.reviewId)
-    let updatedReview = await Reviews.update(req.body, {
+    let reviewId = parseInt(req.params.reviewId)
+    let updatedReview = await Review.update(req.body, {
       where: { id: reviewId },
       returning: true
     })
@@ -39,8 +39,8 @@ const updateReview = async (req, res) => {
 
 const deleteReview = async (req, res) => {
   try {
-    let reviewId = pardeInt(req.params.reviewId)
-    await Reviews.destroy({
+    let reviewId = parseInt(req.params.reviewId)
+    await Review.destroy({
       where: {
         id: reviewId
       }

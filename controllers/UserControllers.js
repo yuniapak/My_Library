@@ -52,6 +52,15 @@ const getFollowers = async (req, res) => {
   }
 }
 
+// const deleteFollowing = async(req,res)=>{
+//     try{
+//     let userId =
+//     let followingId =
+//     }catch(error){
+//         throw error
+//     }
+// }
+
 module.exports = {
   getUserByName,
   createFollower,
