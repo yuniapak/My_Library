@@ -64,6 +64,19 @@ const getUserById = async (req, res) => {
   }
 }
 
+const updateUser = async (req, res) => {
+  try {
+    let userId = parseInt(req.params.userId)
+    let userUpdate = await User.update(req.body, {
+      where: { id: userId },
+      returning: true
+    })
+    res.send(userUpdate)
+  } catch (error) {
+    throw error
+  }
+}
+
 const deleteFollowing = async (req, res) => {
   try {
     let userId = parseInt(req.params.userId)
@@ -83,5 +96,6 @@ module.exports = {
   getFollowing,
   getFollowers,
   getUserById,
+  updateUser,
   deleteFollowing
 }
