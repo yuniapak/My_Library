@@ -8,6 +8,14 @@ const createBook = async (req, res) => {
     throw error
   }
 }
+const getBookById = async (req, res) => {
+  try {
+    let book = await Book.findByPk(req.params.bookId, {})
+    res.send(book)
+  } catch (error) {
+    throw error
+  }
+}
 
 const getBookByTitle = async (req, res) => {
   try {
@@ -74,7 +82,8 @@ const getAllUserBooksByLibrary = async (req, res) => {
     let user = req.params.userId
     let library = req.params.library
     let books = await UserBook.findAll({
-      where: { userId: user, library: library }
+      where: { userId: user, library: library },
+      include: [{ model: Book }]
     })
     res.send(books)
   } catch (error) {
@@ -97,6 +106,7 @@ const deleteUserBook = async (req, res) => {
 
 module.exports = {
   createBook,
+  getBookById,
   getBookByTitle,
   getBookByAuthor,
   createUserBook,

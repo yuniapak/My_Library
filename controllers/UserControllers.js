@@ -52,6 +52,18 @@ const getFollowers = async (req, res) => {
   }
 }
 
+const getUserById = async (req, res) => {
+  try {
+    let userId = parseInt(req.params.userId)
+    let user = await User.findByPk(userId, {
+      attributes: ['username', 'image']
+    })
+    res.send(user)
+  } catch (error) {
+    throw error
+  }
+}
+
 // const deleteFollowing = async(req,res)=>{
 //     try{
 //     let userId =
@@ -65,5 +77,6 @@ module.exports = {
   getUserByName,
   createFollower,
   getFollowing,
-  getFollowers
+  getFollowers,
+  getUserById
 }
