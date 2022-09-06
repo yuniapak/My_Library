@@ -3,10 +3,10 @@ const friendlist = require('../models/friendlist')
 
 const getUserByName = async (req, res) => {
   try {
-    let userName = req.query.search
-    let user = await User.findByPk({
-      username: userName,
-      attributes: ['username', 'image']
+    let userName = req.params.userName
+    let user = await User.findAll({
+      where: { username: userName },
+      attributes: ['id', 'username', 'image']
     })
     res.send(user)
   } catch (error) {
@@ -64,19 +64,24 @@ const getUserById = async (req, res) => {
   }
 }
 
-// const deleteFollowing = async(req,res)=>{
-//     try{
-//     let userId =
-//     let followingId =
-//     }catch(error){
-//         throw error
-//     }
-// }
+const deleteFollowing = async (req, res) => {
+  try {
+    let userId = parseInt(req.params.userId)
+    let followingId = parseInt(req.params.followerId)
+    await FriendList.destroy({
+      where: { userId: userId, friendId: followingId }
+    })
+    res.send({ message: `Unfollowed ${userId} from ${followingId}` })
+  } catch (error) {
+    throw error
+  }
+}
 
 module.exports = {
   getUserByName,
   createFollower,
   getFollowing,
   getFollowers,
-  getUserById
+  getUserById,
+  deleteFollowing
 }
