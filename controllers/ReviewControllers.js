@@ -1,17 +1,30 @@
-const { User, Review } = require('../models')
+const { User, Book, Review } = require('../models')
 
 const getReviewsByBook = async (req, res) => {
   try {
     let bookId = parseInt(req.params.bookId)
     let reviews = await Review.findAll({
       where: { bookId: bookId },
-      include: [{ model: User }]
+      include: [{ model: User }, { model: Book }]
     })
     res.send(reviews)
   } catch (error) {
     throw error
   }
 }
+const getReviewsByBookName = async (req, res) => {
+  try {
+    let bookName = req.params.bookName
+    let reviews = await Review.findAll({
+      where: { 'Book.title': bookName },
+      include: [{ model: User }, { model: Book }]
+    })
+    res.send(reviews)
+  } catch (error) {
+    throw error
+  }
+}
+
 const createReview = async (req, res) => {
   try {
     let bookId = parseInt(req.params.bookId)
@@ -56,6 +69,7 @@ const deleteReview = async (req, res) => {
 
 module.exports = {
   getReviewsByBook,
+  getReviewsByBookName,
   createReview,
   updateReview,
   deleteReview

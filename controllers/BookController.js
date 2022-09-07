@@ -20,7 +20,7 @@ const getBookById = async (req, res) => {
 const getBookByTitle = async (req, res) => {
   try {
     let bookTitle = req.query.search
-    let book = await Book.find({ title: bookTitle })
+    let book = await Book.findAll({ where: { title: bookTitle } })
     res.send(book)
   } catch (error) {
     throw error

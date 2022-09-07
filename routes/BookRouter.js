@@ -3,7 +3,7 @@ const controller = require('../controllers/BookController')
 
 Router.post('', controller.createBook)
 Router.get('/:bookId', controller.getBookById)
-Router.get('/bookTitle', controller.getBookByTitle)
+Router.get('/title/bookTitle', controller.getBookByTitle)
 Router.get('/bookAuthor', controller.getBookByAuthor)
 Router.post('/userbook/:userId/:bookId', controller.createUserBook)
 Router.put('/userbook/:userbookId', controller.updateUserBook)
