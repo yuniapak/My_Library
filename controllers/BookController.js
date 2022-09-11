@@ -89,6 +89,18 @@ const getUserBookByBookId = async (req, res) => {
     throw error
   }
 }
+const getAllUserBooks = async (req, res) => {
+  try {
+    let userId = req.params.userId
+    const allBooks = await UserBook.findAll({
+      where: { userId: userId },
+      include: [{ model: Book }]
+    })
+    res.send(allBooks)
+  } catch (error) {
+    throw error
+  }
+}
 
 const getAllUserBooksByLibrary = async (req, res) => {
   try {
@@ -137,6 +149,7 @@ module.exports = {
   createUserBook,
   updateUserBook,
   getAllUserBooksLibraries,
+  getAllUserBooks,
   getUserBookByBookId,
   getUserBookIfExist,
   getAllUserBooksByLibrary,
