@@ -103,6 +103,18 @@ const getAllUserBooksByLibrary = async (req, res) => {
     throw error
   }
 }
+const getUserBookIfExist = async (req, res) => {
+  try {
+    let userId = req.params.userId
+    let friendId = req.params.bookId
+    let friendList = await UserBook.findAll({
+      where: { userId: userId, bookId: bookId }
+    })
+    res.send(true)
+  } catch (error) {
+    throw error
+  }
+}
 const deleteUserBook = async (req, res) => {
   try {
     let userbookId = req.params.bookId
@@ -126,6 +138,7 @@ module.exports = {
   updateUserBook,
   getAllUserBooksLibraries,
   getUserBookByBookId,
+  getUserBookIfExist,
   getAllUserBooksByLibrary,
   deleteUserBook
 }

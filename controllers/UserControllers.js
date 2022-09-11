@@ -51,6 +51,18 @@ const getFollowers = async (req, res) => {
     throw error
   }
 }
+const getFriendListIfExist = async (req, res) => {
+  try {
+    let userId = req.params.userId
+    let friendId = req.params.friendId
+    let friendList = await FriendList.findAll({
+      where: { userId: userId, friendId: friendId }
+    })
+    res.send(friendList)
+  } catch (error) {
+    throw error
+  }
+}
 
 const getUserById = async (req, res) => {
   try {
@@ -95,6 +107,7 @@ module.exports = {
   createFollower,
   getFollowing,
   getFollowers,
+  getFriendListIfExist,
   getUserById,
   updateUser,
   deleteFollowing

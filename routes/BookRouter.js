@@ -9,6 +9,7 @@ Router.post('/userbook/:userId/:bookId', controller.createUserBook)
 Router.put('/userbook/:userbookId', controller.updateUserBook)
 Router.get('/userbook/book/:userId/:bookId', controller.getUserBookByBookId)
 Router.get('/userbook/:userId', controller.getAllUserBooksLibraries)
+Router.get('/exist/:userId/:bookId', controller.getUserBookIfExist)
 Router.get('/library/:userId/:library', controller.getAllUserBooksByLibrary)
 Router.delete('/userbook/:bookId', controller.deleteUserBook)
 
