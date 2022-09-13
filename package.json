@@ -4,6 +4,7 @@
   "description": "### App to collect, rate and share your favorite books",
   "main": "server.js",
   "engines": {
+    "start": "node server.js",
     "node": "18.9.0"
   },
   "scripts": {
