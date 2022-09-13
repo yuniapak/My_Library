@@ -20,10 +20,10 @@
 ## Diagrams:
 
 Component Hierarchy
-<img src='./diagrams/CH.png'>
+
 
 ERD
-<img src= './diagrams/ERD.png'>
+
 
 ---
 ## MVP
