@@ -9,8 +9,8 @@ module.exports = {
     dialect: 'postgres'
   },
   production: {
-    datatbase: 'new_library_production',
-    // use_env_variable: 'DATABASE_URL',
+    // datatbase: 'new_library_production',
+    use_env_variable: 'DATABASE_URL',
     dialect: 'postgres',
     dialectOptions: {
       ssl: {
