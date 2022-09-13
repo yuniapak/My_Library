@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "### App to collect, rate and share your favorite books",
   "main": "server.js",
+  "engines": {
+    "node": "18.9.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm install && npx sequelize-cli db:migrate",
