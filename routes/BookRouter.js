@@ -1,6 +1,6 @@
 const Router = require('express').Router()
 const controller = require('../controllers/BookController')
-
+const middleware = require('../middleware')
 Router.post('', controller.createBook)
 Router.get('/:bookId', controller.getBookById)
 Router.get('/title/bookTitle', controller.getBookByTitle)
