@@ -1,4 +1,4 @@
-const { User, FriendList } = require('../models')
+const { User, FriendList, UserBook } = require('../models')
 const friendlist = require('../models/friendlist')
 
 const getUserByName = async (req, res) => {
@@ -68,7 +68,8 @@ const getUserById = async (req, res) => {
   try {
     let userId = parseInt(req.params.userId)
     let user = await User.findByPk(userId, {
-      attributes: ['username', 'image']
+      attributes: ['username', 'image'],
+      include: [{ model: FriendList }, { model: UserBook }]
     })
     res.send(user)
   } catch (error) {
